@@ -8,6 +8,7 @@ Gender = Enum('Gender', 'Male Female')
 
 SelectorStatus = Enum('SelectorStatus', 'Man Woman Boy Girl')
 
+
 class DiagnosisClient:
     'Client class for priaid diagnosis health service'       
 
@@ -26,17 +27,17 @@ class DiagnosisClient:
         self._healthServiceUrl = healthServiceUrl
         self._token = self._loadToken(username, password, authServiceUrl)
 
-
     def _loadToken(self, username, password, url):
         rawHashString = hmac.new(bytes(password, encoding='utf-8'), url.encode('utf-8')).digest()
         computedHashString = base64.b64encode(rawHashString).decode()
 
         bearer_credentials = username + ':' + computedHashString
         postHeaders = {
-                'Authorization': 'Bearer {}'.format(bearer_credentials)
+                'Authorization': 'Bearer {}'.format(bearer_credentials),
+                'Accept': 'application/json, text/plain, */*',
+                'Origin': 'https://apimedic.net'
         }
         responsePost = requests.post(url, headers=postHeaders)
-
         data = json.loads(responsePost.text)
         return data
 
