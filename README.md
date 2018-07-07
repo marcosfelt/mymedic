@@ -1,6 +1,6 @@
-# Mad Minute
+# MyMedic
 
-This is a backend for the mad minute Alexa skill.  It uses the web microframework flask along with an extension called [flask-ask](https://github.com/johnwheeler/flask-ask).
+This is a backend for the Google Assistant Action.  It uses the web microframework flask along with an extension called [flask-ask](https://github.com/johnwheeler/flask-ask).
 
 ## Dev Installation
 
